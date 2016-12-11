@@ -8,6 +8,9 @@ import _ from 'underscore';
 // Constants
 import { ADMIN_PREFIX } from '../../constants';
 
+// Messages
+import { formatMessage, MSG_COULD_NOT_FIND_DOCUMENT, MSG_DELETE_CONFIRMATION, MSG_UNSAVED_CHANGES } from '../../utils/messages';
+
 // Components
 import Splitter from '../../components/Splitter';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -53,7 +56,7 @@ export class DocumentEdit extends Component {
   routerWillLeave(nextLocation) {
     const { fieldChanged } = this.props;
     if (fieldChanged)
-      return 'You have unsaved changes on this page. Are you sure you want to leave?';
+      return MSG_UNSAVED_CHANGES;
   }
 
   handleClickSave(id, collection) {
@@ -65,7 +68,7 @@ export class DocumentEdit extends Component {
 
   handleClickDelete(filename, collection) {
     const { deleteDocument } = this.props;
-    const confirm = window.confirm(`Are you sure that you want to delete "${filename}" ?`);
+    const confirm = window.confirm(formatMessage`MSG_DELETE_CONFIRMATION`);
     if (confirm) {
       deleteDocument(filename, collection);
       browserHistory.push(`${ADMIN_PREFIX}/collections/${collection}`);
@@ -81,7 +84,7 @@ export class DocumentEdit extends Component {
     }
 
     if (_.isEmpty(currentDocument)) {
-      return <h1>{`Could not find the document.`}</h1>;
+      return <h1>{MSG_COULD_NOT_FIND_DOCUMENT}</h1>;
     }
 
     const { title, raw_content, draft, http_url, path, collection, front_matter } = currentDocument;
