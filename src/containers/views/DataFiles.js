@@ -7,6 +7,11 @@ import _ from 'underscore';
 // Constants
 import { ADMIN_PREFIX } from '../../constants';
 
+// Messages
+import { formatMessage,
+  MSG_DELETE_CONFIRMATION
+} from '../../utils/messages';
+
 // Components
 import InputSearch from '../../components/form/InputSearch';
 
@@ -26,7 +31,7 @@ export class DataFiles extends Component {
 
   handleClickDelete(filename) {
     const { deleteDataFile } = this.props;
-    const confirm = window.confirm(`Are you sure that you want to delete "${filename}" ?`);
+    const confirm = window.confirm(formatMessage`MSG_DELETE_CONFIRMATION`);
     if (confirm) {
       deleteDataFile(filename);
     }
