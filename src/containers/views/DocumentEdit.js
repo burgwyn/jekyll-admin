@@ -9,7 +9,9 @@ import _ from 'underscore';
 import { ADMIN_PREFIX } from '../../constants';
 
 // Messages
-import { formatMessage, MSG_COULD_NOT_FIND_DOCUMENT, MSG_DELETE_CONFIRMATION, MSG_UNSAVED_CHANGES } from '../../utils/messages';
+import { formatMessage,
+  MSG_COULD_NOT_FIND_DOCUMENT, MSG_DELETE_CONFIRMATION, MSG_UNSAVED_CHANGES
+} from '../../utils/messages';
 
 // Components
 import Splitter from '../../components/Splitter';
