@@ -7,6 +7,9 @@ import _ from 'underscore';
 // Constants
 import { ADMIN_PREFIX } from '../../constants';
 
+// Messages
+import { MSG_UNSAVED_CHANGES } from '../../utils/messages';
+
 // Components
 import Editor from '../../components/Editor';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -37,7 +40,7 @@ export class DataFileNew extends Component {
   routerWillLeave(nextLocation) {
     const { datafileChanged } = this.props;
     if (datafileChanged)
-      return 'You have unsaved changes on this page. Are you sure you want to leave?';
+      return MSG_UNSAVED_CHANGES;
   }
 
   handleClickSave() {
