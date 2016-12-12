@@ -9,6 +9,9 @@ import Editor from '../../components/Editor';
 // Actions
 import { putConfig, onEditorChange } from '../../actions/config';
 
+// Messages
+import { MSG_UNSAVED_CHANGES } from '../../utils/messages';
+
 export class Configuration extends Component {
 
   componentDidMount() {
@@ -19,7 +22,7 @@ export class Configuration extends Component {
   routerWillLeave(nextLocation) {
     const { editorChanged } = this.props;
     if (editorChanged)
-      return 'You have unsaved changes on this page. Are you sure you want to leave?';
+      return MSG_UNSAVED_CHANGES;
   }
 
   handleSaveClick() {
