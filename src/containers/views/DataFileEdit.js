@@ -8,6 +8,11 @@ import _ from 'underscore';
 // Constants
 import { ADMIN_PREFIX } from '../../constants';
 
+// Messages
+import { formatMessage,
+  MSG_COULD_NOT_FIND_DOCUMENT, MSG_DELETE_CONFIRMATION, MSG_UNSAVED_CHANGES
+} from '../../utils/messages';
+
 // Components
 import Splitter from '../../components/Splitter';
 import Editor from '../../components/Editor';
@@ -32,7 +37,7 @@ export class DataFileEdit extends Component {
   routerWillLeave(nextLocation) {
     const { datafileChanged } = this.props;
     if (datafileChanged)
-      return 'You have unsaved changes on this page. Are you sure you want to leave?';
+      return MSG_UNSAVED_CHANGES;
   }
 
   handleClickSave() {
@@ -45,7 +50,7 @@ export class DataFileEdit extends Component {
 
   handleClickDelete(filename) {
     const { deleteDataFile } = this.props;
-    const confirm = window.confirm(`Are you sure that you want to delete "${filename}" ?`);
+    const confirm = window.confirm(formatMessage`MSG_DELETE_CONFIRMATION`);
     if (confirm) {
       deleteDataFile(filename);
       browserHistory.push(`${ADMIN_PREFIX}/datafiles`);
@@ -60,7 +65,7 @@ export class DataFileEdit extends Component {
     }
 
     if (_.isEmpty(datafile)) {
-      return <h1>{`Could not find the data file.`}</h1>;
+      return <h1>{MSG_COULD_NOT_FIND_DOCUMENT}</h1>;
     }
 
     const { slug, ext, raw_content, content } = datafile;
