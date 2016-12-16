@@ -7,6 +7,9 @@ import _ from 'underscore';
 // Constants
 import { ADMIN_PREFIX } from '../../constants';
 
+// Messages
+import { MSG_UNSAVED_CHANGES } from '../../utils/messages';
+
 // Components
 import Splitter from '../../components/Splitter';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -43,7 +46,7 @@ export class PageNew extends Component {
   routerWillLeave(nextLocation) {
     const { fieldChanged } = this.props;
     if (fieldChanged)
-      return 'You have unsaved changes on this page. Are you sure you want to leave?';
+      return MSG_UNSAVED_CHANGES;
   }
 
   handleClickSave() {
