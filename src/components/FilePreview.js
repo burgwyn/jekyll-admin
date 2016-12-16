@@ -1,11 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 
+// Messages
+import { formatMessage,
+  MSG_DELETE_CONFIRMATION
+} from '../utils/messages';
+
 export default class FilePreview extends Component {
 
   handleClickDelete(path) {
     const { onClickDelete } = this.props;
     const filename = path.substring(path.lastIndexOf('/') + 1);
-    const confirm = window.confirm(`Are you sure that you want to delete "${filename}"?`);
+    const confirm = window.confirm(formatMessage`MSG_DELETE_CONFIRMATION`);
     if (confirm) {
       onClickDelete(filename);
     }
