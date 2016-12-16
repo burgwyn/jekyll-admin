@@ -7,6 +7,12 @@ import _ from 'underscore';
 // Constants
 import { ADMIN_PREFIX } from '../../constants';
 
+// Messages
+import { formatMessage,
+  MSG_DELETE_CONFIRMATION,
+  MSG_NO_PAGES_FOUND
+} from '../../utils/messages';
+
 // Components
 import InputSearch from '../../components/form/InputSearch';
 
@@ -26,7 +32,7 @@ export class Pages extends Component {
 
   handleClickDelete(name) {
     const { deletePage } = this.props;
-    const confirm = window.confirm(`Are you sure that you want to delete "${name}"?`);
+    const confirm = window.confirm(formatMessage`MSG_DELETE_CONFIRMATION`);
     if (confirm) {
       deletePage(name);
     }
@@ -97,7 +103,7 @@ export class Pages extends Component {
           pages.length > 0 && this.renderTable()
         }
         {
-          !pages.length && <h1>{`No pages found.`}</h1>
+          !pages.length && <h1>{MSG_NO_PAGES_FOUND}</h1>
         }
       </div>
     );

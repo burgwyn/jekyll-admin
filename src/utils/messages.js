@@ -10,6 +10,8 @@ export const MSG_UNSAVED_CHANGES = 'You have unsaved changes on this page. Are y
 
 export const MSG_NO_DATA_FILES_FOUND = 'No data files found.';
 
+export const MSG_NO_PAGES_FOUND = 'No pages found.';
+
 // helpers
 
 export function formatMessage(message, ...tokens) {
