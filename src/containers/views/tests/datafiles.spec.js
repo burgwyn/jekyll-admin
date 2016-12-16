@@ -6,6 +6,11 @@ import { DataFiles } from '../DataFiles';
 
 import { datafile } from './fixtures';
 
+// Messages
+import {
+  MSG_NO_DATA_FILES_FOUND
+} from '../../../utils/messages';
+
 function setup(datafiles=[datafile]) {
   const actions = {
     fetchDataFiles: expect.createSpy(),
@@ -38,7 +43,7 @@ describe('Containers::DataFiles', () => {
     const { component, table, h1 } = setup([]);
     const compProps = component.props();
     expect(table.node).toNotExist();
-    expect(h1.text()).toBe(`No data files found.`);
+    expect(h1.text()).toBe(MSG_NO_DATA_FILES_FOUND);
   });
 
   it('should call fetchDataFiles action after mounted', () => {

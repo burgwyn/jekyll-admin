@@ -9,7 +9,8 @@ import { ADMIN_PREFIX } from '../../constants';
 
 // Messages
 import { formatMessage,
-  MSG_DELETE_CONFIRMATION
+  MSG_DELETE_CONFIRMATION,
+  MSG_NO_DATA_FILES_FOUND
 } from '../../utils/messages';
 
 // Components
@@ -99,7 +100,7 @@ export class DataFiles extends Component {
           files.length > 0 && this.renderTable()
         }
         {
-          !files.length && <h1>{`No data files found.`}</h1>
+          !files.length && <h1>{MSG_NO_DATA_FILES_FOUND}</h1>
         }
       </div>
     );

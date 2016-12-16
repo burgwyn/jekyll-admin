@@ -6,6 +6,8 @@ export const MSG_DELETE_CONFIRMATION = 'Are you sure that you want to delete "${
 
 export const MSG_UNSAVED_CHANGES = 'You have unsaved changes on this page. Are you sure you want to leave?';
 
+export const MSG_NO_DATA_FILES_FOUND = 'No data files found.';
+
 // helpers
 
 export function formatMessage(message, ...tokens) {
