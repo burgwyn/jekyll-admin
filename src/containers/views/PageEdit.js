@@ -8,6 +8,13 @@ import _ from 'underscore';
 // Constants
 import { ADMIN_PREFIX } from '../../constants';
 
+// Messages
+import { formatMessage,
+  MSG_COULD_NOT_FIND_PAGE,
+  MSG_DELETE_CONFIRMATION,
+  MSG_UNSAVED_CHANGES
+} from '../../utils/messages';
+
 // Components
 import Splitter from '../../components/Splitter';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -47,7 +54,7 @@ export class PageEdit extends Component {
   routerWillLeave(nextLocation) {
     const { fieldChanged } = this.props;
     if (fieldChanged)
-      return 'You have unsaved changes on this page. Are you sure you want to leave?';
+      return MSG_UNSAVED_CHANGES;
   }
 
   handleClickSave(name) {
@@ -59,7 +66,7 @@ export class PageEdit extends Component {
 
   handleClickDelete(name) {
     const { deletePage } = this.props;
-    const confirm = window.confirm(`Are you sure that you want to delete "${name}"?`);
+    const confirm = window.confirm(formatMessage`MSG_DELETE_CONFIRMATION`);
     if (confirm) {
       deletePage(name);
       browserHistory.push(`${ADMIN_PREFIX}/pages`);
